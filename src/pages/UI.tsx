@@ -3,8 +3,12 @@ import { Button } from '@components/ui/button'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup } from '@components/ui/select'
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogClose } from '@components/ui/dialog'
 
+import { ShowWindowSize } from './components/ShowWindowSize'
+import { useWindowSize } from '@hooks/useWindowSize'
+
 export default function UI() {
 	const [open, setOpen] = useState(false)
+	const { width, height } = useWindowSize()
 	const handleClick = () => {
 		setOpen(true)
 	}
@@ -57,5 +61,12 @@ export default function UI() {
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>
+
+		{/* useWindowSize hook */}
+		<div>
+			<p>Width: {width}</p>
+			<p>Height: {height}</p>
+		</div>
+		<ShowWindowSize></ShowWindowSize>
 	</div>
 }
